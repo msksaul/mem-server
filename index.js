@@ -9,11 +9,15 @@ const app = express()
 
 app.use(bodyParser.json({ limit: '30mb', extended: true}))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true}))
-app.use(cors)
+app.use(cors())
+
+app.get('/', (req, res) => {
+  res.send('<h1>Hello</h1>')
+})
 
 app.use('/posts', postRoutes)
 
-const CONNECTION_URL = 'mongodb+srv://jsmastery:jsmastery123@cluster0.xdmuffq.mongodb.net/?retryWrites=true&w=majority'
+const CONNECTION_URL = 'mongodb+srv://jsmastery:jsmastery123@cluster0.xdmuffq.mongodb.net/posts-db?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
