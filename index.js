@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true}))
 app.use(cors())
 
 app.get('/', (_req, res) => {
-  res.send('<h1>Hello</h1>')
+  res.send('APP IS RUNNING')
 })
 
 app.use('/posts', postRoutes)
